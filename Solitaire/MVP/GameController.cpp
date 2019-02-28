@@ -17,6 +17,9 @@ class GameController{
     std::array<list<Card>,7> lowerPiles;
     std::list<Card> topDiamonds, topSpades, topHearts, topClubs;
     std::list<Card> flipPile;
+    int movedFlip, movedLower; // used for cardFlip method to check for if you lose the game
+    int failCount;
+    bool gameLost, gameWon;
     // ============== CONSTRUCTORS ==================
     GameController(){
         initSolitaire();
@@ -58,7 +61,25 @@ class GameController{
             flipPile.front().setVisible(true);
         }
         else{ // if the deck is empty
-
+            shuffledDeck.swap(flipPile);
+            shuffledDeck.reverse();
+            // Check if there were any moves done since the last shuffle
+            if((movedFlip == 0) && (movedLower == 0)){ // no moves = lose game
+                failCount++;
+                if(failCount > 2){
+                    gameLost = true;
+                }
+            }
+            else{ // moves = continue game
+                movedFlip = 0;
+                movedLower = 0;
+                failCount = 0;
+            }
         }
+    }
+
+    // ================ CHECK LOWER MOVE ====================
+    bool checkLowerMove(int pile){
+        
     }
 };
