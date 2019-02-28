@@ -12,11 +12,12 @@ class CardDeck{
     int randomInt;                      // Random integer which aids in shuffling the deck
 
 // =================== CONSTRUCTOR  ===================
-    CardDeck(){
+    CardDeck(){ //hello
         makeSuit(13, "C");
         makeSuit(13, "S");
         makeSuit(13, "H");
         makeSuit(13, "D");
+        shuffle();
     }
 // =================== METHODS  ===================
 
