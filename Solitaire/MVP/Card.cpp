@@ -10,9 +10,9 @@ class Card {
 
 // =================== CONSTRUCTOR ===================
     Card(int number, std::string cardSuit, bool visible){
-        this->num = number;
-        this->suit = cardSuit;
-        this->isVis = visible;
+        num = number;
+        suit = cardSuit;
+        isVis = visible;
     }
 
 // =================== METHODS ===================
@@ -21,26 +21,26 @@ class Card {
     // This method returns the number/rank of the card
     // @return num the number/rank of the card
     int getNum(){
-        return this->num;
+        return num;
     }
 
     // This method returns the suit/type of the card
     // @return suit the suit of the card
     std::string getSuit(){
-        return this->suit;
+        return suit;
     }
 
     // This method returns whether the card is visible (true) or not (false)
     // @return isVis the visibility of the card
     bool getVisible(){
-        return this->isVis;
+        return isVis;
     }
 
 // ------------------- MUTATORS -------------------
 
     // This method sets the visibility of the card to true
     void setVisible(bool visibilty){
-        this->isVis = visibilty;
+        isVis = visibilty;
     }
 
     // This method compares this card to another card and sees if they can
@@ -48,7 +48,7 @@ class Card {
     // @return true the cards can be placed on one another (otherCard on this card)
     // @return false the cards cannot be placed on one another
     bool compareCard(Card otherCard){
-        if((this->num = otherCard.getNum()+1) &&
+        if((num = otherCard.getNum()+1) &&
             this->isRed() != otherCard.isRed()){
                 return true;
         }
@@ -73,6 +73,6 @@ class Card {
     }
 
     std::string toString(){
-        return std::to_string(num) + suit + std::to_string(this->isVis) + "\n";
+        return std::to_string(num) + suit + std::to_string(isVis);
     }
 };

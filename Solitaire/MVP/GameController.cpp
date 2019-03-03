@@ -24,7 +24,7 @@ class GameController{
     // ============== CONSTRUCTORS ==================
     GameController(){
         initSolitaire();
-        run();
+        //run();
     }
 
     // ============== INIT SOLITAIRE ==================
@@ -249,7 +249,7 @@ class GameController{
                     hasMovedFlip++;
                 }
             //}
-            flipCard();
+            //flipCard();
             if(hasMovedFlip != 0){
                 return true;
             }
