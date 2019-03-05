@@ -1,11 +1,12 @@
-#include "CardDeck.cpp" // also contains Card.cpp
+#include "CardDeck.cpp"
+#include <vector>
 #include <stdlib.h>
-#include <iostream>
-#include <array>
-#include <list>
 #include <stack>
 #include <set>
-#include <random>
+#include <iostream>
+#include <array>
+#include <string>
+#include <chrono>
 using namespace std;
 
 class Test{
@@ -13,15 +14,20 @@ class Test{
     CardDeck cardDeck;
 
     Test(){
+        // test
         test_GetSize_UnshuffledDeck();
         test_ViewUnShuffDeck();
         test_Shuffle();
         test_ViewShuffDeck();
         test_getShuffCard();
         test_removeShuffCard();
+        test_getNum();
+        test_getSuit();
+        test_getVisibile();
+        test_setVisibile();
+        test_setNotVisibile();
     }
 
-    //====================================== TEST METHODS OF CARD DECK ======================================
     void test_GetSize_UnshuffledDeck(){
         cout << "======== Now testing: check the un-shuffled deck's size ========" << endl;
         int deckSize = cardDeck.getSize();
@@ -42,7 +48,6 @@ class Test{
         cout << "======== Now testing: view the contents of the shuffled deck ========" << endl;
         cardDeck.viewShuffDeck();
     }
-    //====================================== TEST METHODS OF CARD ======================================
     void test_getShuffCard(){
         cout << "======== Now testing: getting the card at a certain index ========" << endl;
         int index = 2;
@@ -59,6 +64,40 @@ class Test{
         cardDeck.removeShuffCard(index);
         cout << "*** Shuffled Deck After... ***" << endl;
         cardDeck.viewShuffDeck();
+    }
+
+    void test_getNum(){
+        cout << "======== Now testing: getting the number of the card ========" << endl;
+        Card aCard = cardDeck.getShuffCard(0);
+        cout << "The number of card " << aCard.toString() << " is " << aCard.getNum() << endl;
+    }
+
+    void test_getSuit(){
+        cout << "======== Now testing: getting the suit of the card ========" << endl;
+        Card aCard = cardDeck.getShuffCard(0);
+        cout << "The suit of card " << aCard.toString() << " is " << aCard.getSuit() << endl;
+    }
+
+    void test_getVisibile(){
+        cout << "======== Now testing: getting the visibility of the card ========" << endl;
+        Card aCard = cardDeck.getShuffCard(0);
+        cout << "The visibility of card " << aCard.toString() << " is " << aCard.getVisible() << endl;
+    }
+
+    void test_setVisibile(){
+        cout << "======== Now testing: setting the visibility of the card to true(1) ========" << endl;
+        Card aCardB = cardDeck.getShuffCard(0);
+        Card aCardA = cardDeck.getShuffCard(0);
+        aCardA.setVisible();
+        cout << "The visibility of card " << aCardB.toString() << " is now " << aCardA.toString() << endl;
+    }
+
+    void test_setNotVisibile(){
+        cout << "======== Now testing: setting the visibility of the card to false(0) ========" << endl;
+        Card aCardBefore = cardDeck.getShuffCard(0);
+        Card aCardAfter = cardDeck.getShuffCard(0);
+        aCardAfter.setNotVisible();
+        cout << "The visibility of card " << aCardBefore.toString() << " is now " << aCardAfter.toString() << endl;
     }
 };
 
