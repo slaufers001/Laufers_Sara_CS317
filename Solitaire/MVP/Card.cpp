@@ -43,6 +43,10 @@ class Card {
         isVis = visibilty;
     }
 
+    void setNumber(int number){
+        num = number;
+    }
+
     // This method compares this card to another card and sees if they can
     // be placed on top of one another.
     // @return true the cards can be placed on one another (otherCard on this card)

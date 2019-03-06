@@ -5,6 +5,7 @@
 #include "Card.cpp"
 #include <random>
 #include <array>
+#include <algorithm>
 using namespace std;
 
 class CardDeck{
@@ -113,5 +114,21 @@ class CardDeck{
         }
         cout << "ERROR: Reached non-reachable statement: returning false" << endl;
         return false;
+    }
+
+    void setCard(Card c){
+        std::list<Card>:: iterator itr = shuffledDeck.begin();
+        for(int i=0; i<shuffledDeck.size(); i++){
+            if(getShuffCard(i).getNum() == c.getNum() &&
+                getShuffCard(i).getSuit() == c.getSuit()){
+                    advance(itr, i);
+                    shuffledDeck.erase(itr);
+                    shuffledDeck.insert(itr, c);
+            }
+        }
+        //shuffledDeck.emplace_front(i, suit, vis);
+    }
+
+    void setCard(Card c1, Card c2){
     }
 };

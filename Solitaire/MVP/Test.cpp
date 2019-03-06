@@ -14,6 +14,7 @@ class Test{
     CardDeck cardDeck;
 
     Test(){
+        init();
         // test
         test_GetSize_UnshuffledDeck();
         test_ViewUnShuffDeck();
@@ -24,8 +25,16 @@ class Test{
         test_getNum();
         test_getSuit();
         test_getVisibile();
-        test_setVisibile();
-        test_setNotVisibile();
+        test_ViewShuffDeck();
+        //test_setVisibile();
+        test2();
+        //test_ViewShuffDeck();
+        //test_setNotVisibile();
+        //test_ViewShuffDeck();
+    }
+
+    void init(){
+        cardDeck = CardDeck();
     }
 
     void test_GetSize_UnshuffledDeck(){
@@ -85,20 +94,38 @@ class Test{
     }
 
     void test_setVisibile(){
-        cout << "======== Now testing: setting the visibility of the card to true(1) ========" << endl;
-        Card aCardB = cardDeck.getShuffCard(0);
-        Card aCardA = cardDeck.getShuffCard(0);
-        aCardA.setVisible();
-        cout << "The visibility of card " << aCardB.toString() << " is now " << aCardA.toString() << endl;
+         cout << "======== Now testing: setting the visibility of the card to true(1) ========" << endl;
+        // Card aCardB = cardDeck.getShuffCard(0);
+        // Card aCardA = cardDeck.getShuffCard(0);
+        // aCardA.setVisible(true);
+        // cout << "The visibility of card " << aCardB.toString() << " is now " << aCardA.toString() << endl;
+        list<Card> pile;
+        for(int i=0; i<cardDeck.getSize()-1; i++){
+            pile.push_front(cardDeck.shuffledDeck.front());
+            //cout<<cardDeck.shuffledDeck.front().toString() << endl;
+            cardDeck.shuffledDeck.pop_front();
+        }
+        pile.reverse();
+        pile.front().setVisible(true);
+
+        for(std::list<Card>::iterator it=pile.begin(); it!=pile.end();it++){
+            cout<<it->toString()<<", ";
+
+        }
+        cout << endl;
     }
 
-    void test_setNotVisibile(){
-        cout << "======== Now testing: setting the visibility of the card to false(0) ========" << endl;
-        Card aCardBefore = cardDeck.getShuffCard(0);
-        Card aCardAfter = cardDeck.getShuffCard(0);
-        aCardAfter.setNotVisible();
-        cout << "The visibility of card " << aCardBefore.toString() << " is now " << aCardAfter.toString() << endl;
+    void test2(){
+        cout << "======== Now testing: setting the visibility of the card to true(2) ========" << endl;
+        Card card = cardDeck.getShuffCard(2);
+        card.setVisible(true);
+        cout << card.toString()<<endl;
+        for(std::list<Card>::iterator it=cardDeck.shuffledDeck.begin(); it!=cardDeck.shuffledDeck.end();it++){
+            cout<<it->toString()<<", ";
+
+        }
     }
+
 };
 
 int main(){
